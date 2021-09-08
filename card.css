@@ -1,0 +1,12 @@
+.card{
+    width: 100px;
+    height: 130px;
+}
+
+.frontCard{
+    display: none;
+}
+
+.behindCard{
+    display: block;
+}
