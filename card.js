@@ -51,8 +51,8 @@
         setTdTemplate : function(num) {
             let template = "";
             template += "<td class='cardNum'>"
-            template += "<img id='front"+num+"' class='card frontCard "+num+"' src='image/"+num+".png'>"
-            template += "<img id='behind"+num+"' class='card behindCard' src='image/close.png' onclick='cardGame.event.openCard("+num+")'>"
+            template += "<img id='front"+num+"' class='card front frontCard "+num+"' src='image/"+num+".png'>"
+            template += "<img id='behind"+num+"' class='card behind behindCard "+num+"' src='image/close.png' onclick='cardGame.event.openCard("+num+")'>"
             template += "</td>";
             return template;
         }
@@ -62,50 +62,42 @@
 
         openedCard : 0,
 
-        // fail: function() {
-        //     $('.frontCard').attr('style', "display:none;");
-        //     $('.behindCard').attr('style', "display:block;");
-        // },
-
-        // success: function(num) {
-        //     $('.openedCard').attr('style', "display:none;")
-        //     $('#front'+num).attr('style', "display:none;");
-        // },
-
-        // setTime: function(callback) {
-        //     setTimeout(function() {
-        //         callback();
-        //     }, 800);
-        // },
-
         openCard: function(num) {
-            $('#front'+num).addClass('openedCard');
-            $('#front'+num).attr('style', "display:block;");
             $('#behind'+num).attr('style', "display:none;");
-            console.log(this.openedCard)
+            $('#front'+num).attr('style', "display:block;");
+            $('.'+num).addClass('opened');
+            
             if(this.openedCard == 0){
-                // $('.'+num).addClass('openedCard');
                 this.openedCard = num;
-                console.log(this.openedCard)    
-                
+                console.log("처음")
             }else {
+                let preNum = this.openedCard;
                 if(num == this.openedCard + 40 || num == this.openedCard - 40){
-                    console.log(this.openedCard)
+                    console.log("성공")
+                   
                     setTimeout(function() {
-                        console.log(this.openedCard)
-                        $('.openedCard').attr('style', "display:none;")
-                        $('#front'+num).attr('style', "display:none;");
+                        $('.opened').addClass('success');
+                        $('.'+num).addClass('success');
+                        $('.success').attr('style', "display:none;");
+                        $('.success .front').removeClass('frontCard');
+                        $('.success .behind').removeClass('behindCard');
                     }, 800);
                     this.openedCard = 0;
                 }else{
-                    console.log("틀림")
+                    console.log("실패")
                     setTimeout(function() {
-                        $('.frontCard').attr('style', "display:none;");
-                        $('.behindCard').attr('style', "display:block;");
+                        $('#front'+num).attr('style', "display:none;");
+                        $('#behind'+num).attr('style', "display:block;");
+                        $('#front'+preNum).attr('style', "display:none;");
+                        $('#behind'+preNum).attr('style', "display:block;");
+                        $('.frontCard').removeClass('opened');
+                        $('.behindCard').removeClass('opened');
                     }, 800);
-                    this.openedCard = 0; 
+                    this.openedCard = 0;
                 }
             }
+            console.log("무조건탐")
+            
         }
     };
 }(window, document));

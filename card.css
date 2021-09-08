@@ -10,3 +10,7 @@
 .behindCard{
     display: block;
 }
+
+.success{
+    display: none;
+}
