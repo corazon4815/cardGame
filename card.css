@@ -14,3 +14,14 @@
 .success{
     display: none;
 }
+
+.scoreTable *{
+    width: 300px;
+    border: 1px solid #444444;
+}
+
+.scoreTable td,.scoreTable tr{
+    text-align: center;
+}
+
+
