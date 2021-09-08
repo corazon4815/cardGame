@@ -1,4 +1,4 @@
-https://corazon4815.github.io/cardgame/index <-게임 페이지
+https://corazon4815.github.io/cardGame/ <-게임 페이지
 
 # cardGame
 
