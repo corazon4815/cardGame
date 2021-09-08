@@ -37,6 +37,7 @@
                 td = "";
             }
             $("#cardTable").html(html);
+            $("#clickCnt").html(cardGame.event.clickCnt);
         }
     }
     cardGame.template = {
@@ -55,14 +56,21 @@
             template += "<img id='behind"+num+"' class='card behind behindCard "+num+"' src='image/close.png' onclick='cardGame.event.openCard("+num+")'>"
             template += "</td>";
             return template;
+        },
+        setClickCnt : function(clickCnt) {
+            $("#clickCnt").html(cardGame.event.clickCnt);
         }
     }    
 
     cardGame.event = {
 
+        clickCnt : 0,
+
         openedCard : 0,
 
         openCard: function(num) {
+            this.clickCnt++;
+            cardGame.template.setClickCnt(this.clickCnt);
             $('#behind'+num).attr('style', "display:none;");
             $('#front'+num).attr('style', "display:block;");
             $('.'+num).addClass('opened');
