@@ -1,3 +1,5 @@
+https://corazon4815.github.io/cardgame/index <-게임 페이지
+
 # cardGame
 
 ### 내가 하려고 만든 카드 짝맞추기 게임
