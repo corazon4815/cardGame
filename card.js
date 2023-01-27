@@ -123,7 +123,7 @@
                             }else{
                                 return false;
                             }
-                            alert("와아아 다 맞추셨어요! 축하 선물은 제 마음❤")
+                            alert("Congratulations! The present for you is my heard🤣🤣")
                             location.reload();
                         }
                       }
