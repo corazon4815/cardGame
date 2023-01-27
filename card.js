@@ -123,7 +123,7 @@
                             }else{
                                 return false;
                             }
-                            alert("Congratulations! The present for you is my heard🤣🤣")
+                            alert("Congratulations! The present for you is my heart🤣🤣")
                             location.reload();
                         }
                       }
