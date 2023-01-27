@@ -1,34 +1,26 @@
-https://corazon4815.github.io <-게임 페이지
+## 🎉Let's play the Memory Game
 
-# cardGame
 
-### 내가 하려고 만든 카드 짝맞추기 게임
-카드 두세트를 무작위로 섞어 놓고 똑같은 카드를 찾으면 성공
+<img width="800px" src="https://user-images.githubusercontent.com/69441691/215013882-a14b2991-458f-4cc5-8595-93659b82217c.gif"/>
 
----------------------------
-### 수정내역
+### 🎈 Game Page
 
-21.09.07 ver 1.0.0
-- 베타버전 배포
+    https://corazon4815.github.io
 
-21.09.08 ver 1.0.1
-- 맞춘 카드 안 사라지는 문제 수정
-- 클릭 횟수 기능 추가 
-- 순위 기능 추가
----------------------------
+### 🎈 Game Rule
 
----------------------------
-### 추후 변경될 사항
-1. TypeScript로 변경
-2. 영어카드 포함, 불포함 선택가능
-3. 타이머 생성해서 순위 표시
-4. 토글로 뒤집는 모양
-5. 소리넣기
-6. 플레이어 2인 가능 
----------------------------
+	This game is a game played with a set of cards. 
+    The cards have a pictures on one side and each picture appears on two cards. 
+    The game starts with all the cards face down and players take turns to turn over 
+    two cards. If the two cards have the same picture, then disappeared the cards, 
+    otherwise they turn the cards face down again.
+    If you leave the browser, your score will be maintained.
+    I hope you enjoy it. 😊😊😊
 
----------------------------
-### 현재 버그
-- 두장이 뒤집어지기 전에 세번째장을 뒤집을수 있는 문제
-- 줄 비워질경우 당겨지는 현상 
----------------------------
+
+### 👑 If you've done..
+
+    A surprise present for you!🎉🎉🎉 
+
+	
+
