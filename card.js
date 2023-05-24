@@ -15,18 +15,18 @@
         
         init : function() {
             let array = Array(80).fill(undefined).map((v, i) => i + 1); //1부터 80까지 배열
-            function shuffle(array) {
+            let shuffle = (array) => {
                 array.sort(() => Math.random() - 0.5);
             }
             shuffle(array);
 
             Array.prototype.division = function (n) {
-                var arr = this;
-                var len = arr.length;
-                var cnt = Math.floor(len / n);
-                var tmp = [];
+                let arr = this;
+                let len = arr.length;
+                let cnt = Math.floor(len / n);
+                let tmp = [];
         
-                for (var i = 0; i <= cnt; i++) {
+                for (let i = 0; i <= cnt; i++) {
                     tmp.push(arr.splice(0, n));
                 }
                 return tmp;
@@ -78,6 +78,15 @@
         successCount : 0,
 
         openCard: function(num) {
+            let sleep = (ms) => {
+                return new Promise(resolve => setTimeout(resolve, ms));
+              } 
+            //클릭막기 풀기
+            let clickOk = async () => {
+                await sleep(800);  
+                $('body').removeClass('click-stop');  
+            }
+
             this.clickCnt++;
             cardGame.template.setClickCnt(this.clickCnt);
             $('#behind'+num).attr('style', "display:none;");
@@ -86,32 +95,27 @@
             
             if(this.openedCard == 0){
                 this.openedCard = num;
-                console.log("처음")
+                console.log("첫카드");
             }else {
+                $('body').addClass('click-stop'); //3번째 카드 클릭을 막음
                 let preNum = this.openedCard;
                 if(num == this.openedCard + 40 || num == this.openedCard - 40){
-                    console.log("성공")
                     this.successCount++;
-
-                    function sleep(ms) {
-                        return new Promise(resolve => setTimeout(resolve, ms));
-                      }
-                      
-                      async function process(clickCnt, successCount) {
+                    console.log("짝 성공");
+                    //짝 성공했을때
+                    let succeseeProcess = async(clickCnt, successCount) => {
                         await sleep(800);
-                        console.log(successCount);
                         $('.opened').addClass('success');
                         $('.'+num).addClass('success');
-                        $('.success').attr('style', "display:none;");
                         $('.success .front').removeClass('frontCard');
                         $('.success .behind').removeClass('behindCard');
-
+                        
+                        //모두성공
                         if(successCount==40){        
                             let firstScoreVal = $('#firstScore').html();
                             let secondScoreVal = $('#secondScore').html();
                             let thirdScoreVal = $('#thirdScore').html();
-                           console.log(firstScoreVal)
-                           console.log(typeof firstScoreVal)
+
                             if(clickCnt < firstScoreVal || firstScoreVal =="no record"){
                                 localStorage.setItem("firstScore", clickCnt);
                             
@@ -126,17 +130,14 @@
                             alert("Congratulations! The present for you is my heart🤣🤣")
                             location.reload();
                         }
-                      }
-                      process(this.clickCnt, this.successCount);
-
+                    }
+                    succeseeProcess(this.clickCnt, this.successCount);
                     this.openedCard = 0;
+                    clickOk();
                 }else{
-                    console.log("실패")
-                    function sleep(ms) {
-                        return new Promise(resolve => setTimeout(resolve, ms));
-                        }
-                      
-                    async function process() {
+                    console.log("짝실패")
+                    //짝 실패했을때
+                    let failProcess = async () => {
                         await sleep(800);
                         $('#front'+num).attr('style', "display:none;");
                         $('#behind'+num).attr('style', "display:block;");
@@ -145,12 +146,11 @@
                         $('.frontCard').removeClass('opened');
                         $('.behindCard').removeClass('opened');
                     }
-                    process(this.clickCnt, this.successCount);
+                    failProcess(this.clickCnt, this.successCount);
                     this.openedCard = 0;
+                    clickOk();
                 }
             }
-            console.log("무조건탐")
-            
         }
     };
 }(window, document));
